@@ -18,6 +18,13 @@ class UserTypeRequest extends FormRequest
         return Gate::allows('isAdmin');
     }
 
+    public function prepareForValidation()
+    {
+        $this->merge([
+            'type' => $this->route('type'), // Assuming 'type' is a route parameter
+        ]);
+    }
+
     /**
      * Get the validation rules that apply to the request.
      *

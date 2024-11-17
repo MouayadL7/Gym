@@ -19,7 +19,7 @@ class SubscriptionRepository
         return UserSubscription::updateOrCreate($data);
     }
 
-    public function latestSubscription(User $user): UserSubscription
+    public function latestSubscription(User $user): UserSubscription|null
     {
         return $user->subscriptions()->latest('end_date')->first();
     }

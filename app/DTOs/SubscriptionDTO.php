@@ -13,7 +13,7 @@ class SubscriptionDTO
             'subscription_id' => $this->subscriptionId,
             'start_date' => now(),
             'end_date' => now()->addMonth(),
-            'status' => 'active'
+            'is_active' => true,
         ];
     }
 }

@@ -35,13 +35,13 @@ Route::middleware(['auth:sanctum'])->group(function () {
     Route::get('services/all/{service}', [ServiceController::class, 'show']);
 
     // Users
-    Route::get('users/{type}', [UserController::class, 'index']); 
-    Route::get('users/trainers/service/{service}', [UserController::class, 'getTrainersByService']);
+    Route::get('users/{type}', [UserController::class, 'index']);
+    Route::get('users/trainer/service/{service}', [UserController::class, 'getTrainersByService']);
 
     // Approvals
     Route::get('approvals', [UserController::class, 'getPendingTrainers']);
-    Route::put('approvals/approve/{trainer}', [UserController::class, 'approveTrainer']);
-    Route::put('approvals/reject/{trainer}', [UserController::class, 'rejectTrainer']);
+    Route::put('approvals/approve/{user}', [UserController::class, 'approveTrainer']);
+    Route::put('approvals/reject/{user}', [UserController::class, 'rejectTrainer']);
 
     // Subscriptions
     Route::get('subscriptions', [SubscriptionController::class, 'index']);

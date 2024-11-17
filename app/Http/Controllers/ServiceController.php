@@ -17,7 +17,7 @@ class ServiceController extends Controller
     {
         $services = $this->serviceManagementService->getAll();
 
-        return ResponseHelper::sendResponse($services, 'Services retrieved successfully');
+        return ResponseHelper::sendResponse($services);
     }
 
     /**
@@ -27,6 +27,6 @@ class ServiceController extends Controller
     {
         $service = $this->serviceManagementService->get($service);
 
-        return ResponseHelper::sendResponse($service, 'Service retrieved successfully');
+        return ResponseHelper::sendResponse($service);
     }
 }

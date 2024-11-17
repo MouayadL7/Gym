@@ -16,7 +16,7 @@ class AuthController extends Controller
     {
         $response = $this->authService->registerUser($request->toDTO());
 
-        return ResponseHelper::sendResponse($response, 'User registered successfully');
+        return ResponseHelper::sendResponse($response);
     }
 
     public function login(LoginRequest $request)
@@ -24,7 +24,7 @@ class AuthController extends Controller
         try {
             $response = $this->authService->loginUser($request->toDTO());
 
-            return ResponseHelper::sendResponse($response, 'User Logged in successfully');
+            return ResponseHelper::sendResponse($response);
 
         } catch (\Exception $ex) {
             return ResponseHelper::sendError($ex->getMessage(), $ex->getCode());
@@ -35,6 +35,6 @@ class AuthController extends Controller
     {
         $this->authService->logoutUser($request);
 
-        return ResponseHelper::sendResponse([], 'User logged out successfully');
+        return ResponseHelper::sendResponse([]);
     }
 }

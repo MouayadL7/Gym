@@ -11,12 +11,11 @@ class ResponseHelper
      * @param string $message
      * @return \Illuminate\Http\JsonResponse
      */
-    public static function sendResponse($result, $message)
+    public static function sendResponse($result)
     {
         $response = [
             'status' => 'success',
             'data'    => $result,
-            'message' => $message,
         ];
 
         return response()->json($response, 200);

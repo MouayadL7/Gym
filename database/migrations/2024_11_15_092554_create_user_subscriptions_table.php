@@ -17,7 +17,7 @@ return new class extends Migration
             $table->foreignId('subscription_id')->constrained('subscriptions')->onDelete('cascade');
             $table->date('start_date');
             $table->date('end_date');
-            $table->string('status')->default('active'); // e.g., active, pending, expired
+            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }

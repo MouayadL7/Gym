@@ -18,7 +18,7 @@ class ReportController extends Controller
     {
         $reports = $this->reportService->getReports();
 
-        return ResponseHelper::sendResponse($reports, 'Reports retrieved successfully');
+        return ResponseHelper::sendResponse($reports);
     }
 
     /**
@@ -28,7 +28,7 @@ class ReportController extends Controller
     {
         $report = $this->reportService->storeReport($request->toDTO());
 
-        return ResponseHelper::sendResponse($report, 'Report sent successfully');
+        return ResponseHelper::sendResponse($report);
     }
 
     /**
@@ -38,6 +38,6 @@ class ReportController extends Controller
     {
         $this->reportService->deleteReport($report);
 
-        return ResponseHelper::sendResponse([], 'Report deleted successfully');
+        return ResponseHelper::sendResponse([]);
     }
 }

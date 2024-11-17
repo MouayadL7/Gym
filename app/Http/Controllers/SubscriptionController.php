@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Exceptions\ActiveSubscriptionException;
 use App\Helpers\ResponseHelper;
 use App\Http\Requests\SubscribeRequest;
 use App\Http\Requests\UpdateSubscriptionRequest;
@@ -17,28 +18,32 @@ class SubscriptionController extends Controller
     {
         $subscriptions = $this->subscriptionService->getAll();
 
-        return ResponseHelper::sendResponse($subscriptions, 'Subscriptions retrieved successfully');
+        return ResponseHelper::sendResponse($subscriptions);
     }
 
     public function subscribe(SubscribeRequest $request)
     {
-        $response = $this->subscriptionService->subscribeUser($request->toDTO());
+        try {
+            $response = $this->subscriptionService->subscribeUser($request->toDTO());
 
-        return ResponseHelper::sendResponse($response, 'Subscription successfully created.');
+            return ResponseHelper::sendResponse($response);
+
+        } catch (ActiveSubscriptionException $ex) {
+            return ResponseHelper::sendError($ex->getMessage(), $ex->getCode());
+        }
     }
 
     public function checkUserSubscriptionStatus(User $user)
     {
         $status = $this->subscriptionService->checkUserSubscriptionStatus($user);
-        $message = $this->subscriptionService->getStatusMessage($status);
 
-        return ResponseHelper::sendResponse(['status' => $status], $message);
+        return ResponseHelper::sendResponse(['status' => $status]);
     }
 
     public function update(UpdateSubscriptionRequest $request, Subscription $subscription)
     {
-        $subscription = $this->subscriptionService->updateSubscription($request->toDTO(), $subscription);
+        $this->subscriptionService->updateSubscription($request->toDTO(), $subscription);
 
-        return ResponseHelper::sendResponse($subscription, 'Subscription updated successfully.');
+        return ResponseHelper::sendResponse($subscription);
     }
 }

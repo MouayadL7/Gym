@@ -3,6 +3,7 @@
 namespace App\Repositories;
 
 use App\Models\Trainer;
+use App\Models\User;
 use Illuminate\Database\Eloquent\Collection;
 
 class TrainerRepository
@@ -29,16 +30,16 @@ class TrainerRepository
                     ->get();
     }
 
-    public function approveTrainer(Trainer $trainer)
+    public function approveTrainer(User $user)
     {
-        $trainer->update([
+        $user->userable->update([
             'approval' => 'accepted'
         ]);
     }
 
-    public function rejectTrainer(Trainer $trainer)
+    public function rejectTrainer(User $user)
     {
-        $trainer->update([
+        $user->userable->update([
             'approval' => 'rejected'
         ]);
     }

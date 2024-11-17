@@ -6,6 +6,7 @@ use App\Factories\UserRepositoryFactory;
 use App\Factories\UserResourceFactory;
 use App\Http\Resources\TrainerResource;
 use App\Models\Trainer;
+use App\Models\User;
 use Illuminate\Support\Facades\DB;
 
 class UserService
@@ -36,17 +37,17 @@ class UserService
         return TrainerResource::collection($pendingTrainers)->each->withCv();
     }
 
-    public function approveTrainer(Trainer $trainer)
+    public function approveTrainer(User $user)
     {
-        $this->repository->approveTrainer($trainer);
+        $this->repository->approveTrainer($user);
 
-        return new TrainerResource($trainer);
+        return new TrainerResource($user->userable);
     }
 
-    public function rejectTrainer(Trainer $trainer)
+    public function rejectTrainer(User $user)
     {
-        $this->repository->rejectTrainer($trainer);
+        $this->repository->rejectTrainer($user);
 
-        return new TrainerResource($trainer);
+        return new TrainerResource($user->userable);
     }
 }
