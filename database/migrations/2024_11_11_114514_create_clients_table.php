@@ -14,8 +14,6 @@ return new class extends Migration
         Schema::create('clients', function (Blueprint $table) {
             $table->id();
             $table->integer('age');
-            $table->float('height');
-            $table->float('weight');
             $table->timestamps();
         });
     }

@@ -14,11 +14,8 @@ class RegisterDTO
         public string $password,
         public string $gender,
         public ?int $age = null,
-        public ?float $height = null,
-        public ?float $weight = null,
         public ?int $experience_years = null,
         public ?int $service_id = null,
-        public ?UploadedFile $cv = null,
     ) {}
 
     /**
@@ -33,11 +30,8 @@ class RegisterDTO
             'password' => bcrypt($this->password),
             'gender' => $this->gender,
             'age' => $this->age,
-            'height' => $this->height,
-            'weight' => $this->weight,
             'experience_years' => $this->experience_years,
             'service_id' => $this->service_id,
-            'cv' => $this->cv ? FileHelper::storeFile($this->cv, 'cvs', 'public') : null,  // Store the file if it exists
         ], fn($value) => !is_null($value));
     }
 }

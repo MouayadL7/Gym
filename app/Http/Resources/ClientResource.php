@@ -21,8 +21,6 @@ class ClientResource extends JsonResource
             'gender' => $this->user->gender,
             'role' => $this->user->role,
             'age' => $this->age,
-            'height' => $this->height,
-            'weight' => $this->weight,
         ];
     }
 }

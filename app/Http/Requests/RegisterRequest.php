@@ -44,14 +44,11 @@ class RegisterRequest extends FormRequest
     {
         $clientFields = [
             'age' => ['required', 'integer', 'min:1'],
-            'height' => ['required', 'numeric'],
-            'weight' => ['required', 'numeric'],
         ];
 
         $trainerFields = [
             'experience_years' => ['required', 'integer'],
             'service_id' => ['required', 'exists:services,id'],
-            'cv' => ['required', 'file', 'mimes:pdf,doc,docx|max:2048'],
         ];
 
         $validator->sometimes(array_keys($clientFields), $clientFields, function ($input) {
@@ -83,11 +80,8 @@ class RegisterRequest extends FormRequest
             password: $this->input('password'),
             gender: $this->input('gender'),
             age: $this->input('age'),
-            height: $this->input('height'),
-            weight: $this->input('weight'),
             experience_years: $this->input('experience_years'),
             service_id: $this->input('service_id'),
-            cv: $this->file('cv')
         );
     }
 }

@@ -14,7 +14,6 @@ class Trainer extends Model
     protected $fillable = [
         'service_id',
         'experience_years',
-        'cv',
         'approval'
     ];
 

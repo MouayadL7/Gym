@@ -15,7 +15,7 @@ class UserTypeRequest extends FormRequest
      */
     public function authorize(): bool
     {
-        return Gate::allows('isAdmin');
+        return true;
     }
 
     public function prepareForValidation()

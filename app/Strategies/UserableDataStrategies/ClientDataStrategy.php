@@ -12,8 +12,6 @@ class ClientDataStrategy implements UserableDataStrategy
         // Client-specific logic for data
         return [
             'age' => $registerDTO->age,
-            'height' => $registerDTO->height,
-            'weight' => $registerDTO->weight
         ];
     }
 }

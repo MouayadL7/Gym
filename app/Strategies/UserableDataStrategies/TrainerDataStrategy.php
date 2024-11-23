@@ -13,7 +13,6 @@ class TrainerDataStrategy implements UserableDataStrategy
         return [
             'experience_years' => $registerDTO->experience_years,
             'service_id' => $registerDTO->service_id,
-            'cv' => $registerDTO->cv
         ];
     }
 }
