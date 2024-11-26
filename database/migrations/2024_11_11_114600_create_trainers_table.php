@@ -16,7 +16,6 @@ return new class extends Migration
             $table->id();
             $table->foreignId('service_id')->constrained('services')->onDelete('cascade');
             $table->integer('experience_years');
-            $table->enum('approval', ['pending', 'accepted', 'rejected'])->default('pending');
             $table->timestamps();
         });
         Schema::enableForeignKeyConstraints();

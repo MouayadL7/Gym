@@ -34,25 +34,4 @@ class UserController extends Controller
 
         return ResponseHelper::sendResponse($trainers);
     }
-
-    public function getPendingTrainers()
-    {
-        $pendingTrainers = $this->userService->getPendingTrainers();
-
-        return ResponseHelper::sendResponse($pendingTrainers);
-    }
-
-    public function approveTrainer(User $user)
-    {
-        $approvedTrainer = $this->userService->approveTrainer($user);
-
-        return ResponseHelper::sendResponse($approvedTrainer);
-    }
-
-    public function rejectTrainer(User $user)
-    {
-        $rejectedTrainer = $this->userService->rejectTrainer($user);
-
-        return ResponseHelper::sendResponse($rejectedTrainer);
-    }
 }

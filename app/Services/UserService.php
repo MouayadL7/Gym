@@ -29,25 +29,4 @@ class UserService
 
         return TrainerResource::collection($trainers);
     }
-
-    public function getPendingTrainers()
-    {
-        $pendingTrainers = $this->repository->getPendingTrainers();
-
-        return TrainerResource::collection($pendingTrainers)->each->withCv();
-    }
-
-    public function approveTrainer(User $user)
-    {
-        $this->repository->approveTrainer($user);
-
-        return new TrainerResource($user->userable);
-    }
-
-    public function rejectTrainer(User $user)
-    {
-        $this->repository->rejectTrainer($user);
-
-        return new TrainerResource($user->userable);
-    }
 }

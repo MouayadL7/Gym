@@ -14,7 +14,6 @@ class Trainer extends Model
     protected $fillable = [
         'service_id',
         'experience_years',
-        'approval'
     ];
 
     public function user()
@@ -34,11 +33,5 @@ class Trainer extends Model
                 $query->select('id', 'name');
             }]);
         });
-    }
-
-    // Local scope for pending trainers
-    public function scopePending(Builder $query): Builder
-    {
-        return $query->where('approval', 'pending');
     }
 }
